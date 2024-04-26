@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{home.title}"></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<!--Phân đoạn-->
+<th:block th:insert="~{/layout/header :: navbar}"></th:block>
+<h1>Helo mn</h1>
+<!--Hiê thị html-->
+<th:block th:if="${student.age>10}" th:utext="${html}"></th:block>
+<!--Hiển thị nội dung văn bản-->
+<p th:text="|JS    ${message}        JAVA|">ko hiên thi gì ở đây đau</p>
+<p th:text="${'JS '+ message +' JAVA'}">ko hiên thi gì ở đây đau</p>
+<p th:text="${student.name}">ko hiên thi gì ở đây đau</p>
+<p th:text="#{home.content}">ko hiên thi gì ở đây đau</p>
+<ul th:object="${student}">
+    <li th:text="*{id}" th:class="${student.age<18?'danger':''}"></li>
+    <li th:text="*{name}"></li>
+    <li th:text="*{age}"></li>
+</ul>
+<a th:href="@{/student/list}">Goto list student</a>
+<!--Vòng lăp-->
+<!--<ul th:each="num,loop :${array}">-->
+<!--    <li th:id="${loop.count}" th:text="${num}"></li>-->
+<!--</ul>-->
+
+<!--<ul th:each="page,loop :${#numbers.sequence(1,totalPage)}">-->
+<!--    <li th:id="${loop.count}" th:text="${page}"></li>-->
+<!--</ul>-->
+
+<!--IF-->
+<p th:if="${student.age>18}" th:text="'Đã đủ tuổi'">
+</p>
+<!--ELSE-->
+<p th:unless="${student.age>18}" th:text="'Chưa đủ tuổi'"></p>
+
+<!--Switch case-->
+<th:block th:switch="${student.age > 18}">
+    <p th:case="true">Lơn hon 18</p>
+<!--    ...-->
+    <p th:case="*">Lơn hon 18</p>
+</th:block>
+
+</body>
+</html>
