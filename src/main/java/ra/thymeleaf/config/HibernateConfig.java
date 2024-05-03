@@ -48,7 +48,7 @@ public class HibernateConfig {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/SpringMVC_JPA?createDatabaseIfNotExist=true");
         dataSource.setUsername("root");
-        dataSource.setPassword("");
+        dataSource.setPassword("hung18061999");
         return dataSource;
     }
     // cấu hình transaction
